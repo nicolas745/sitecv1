@@ -1,0 +1,403 @@
+2022-10-17 13:43:37 CEST (INFO): 634d3fe8a0e857.34764674: Updating database version from 0.0.0 to 2.31.2 (begin).
+2022-10-17 13:43:38 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_lookup' doesn't exist, SQL: 
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/correctLookupTableIssue.sql BEGIN ----- */ 
+
+delete from wp_abj404_lookup
+where lkup_value in (
+    select * from (
+	    SELECT DISTINCT lkup_value 
+	    FROM wp_abj404_lookup 
+	    group by lkup_value 
+	    having count(lkup_value) > 1
+    ) a
+)
+
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/correctLookupTableIssue.sql END ----- */ 
+, Execution time: 0.05, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/plugin-install.php?s=404&tab=search&type=term, Requested URL: /wp-admin/plugins.php?_wpnonce=c5392ee0de&action=activate&plugin=404-solution%2F404-solution.php, 
+Stored debug messages: 
+, 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(448): ABJ_404_Solution_DataAccess->queryAndGetResults('\n/* -----------...')
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(75): ABJ_404_Solution_DataAccess->correctDuplicateLookupValues()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(51): ABJ_404_Solution_DatabaseUpgradesEtc->correctIssuesBefore()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(41): ABJ_404_Solution_DatabaseUpgradesEtc->reallyCreateDatabaseTables(true)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(375): ABJ_404_Solution_DatabaseUpgradesEtc->createDatabaseTables(true)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(335): ABJ_404_Solution_PluginLogic->updateToNewVersionAction(Array)
+#7 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(305): ABJ_404_Solution_PluginLogic->updateToNewVersion(Array)
+#8 /var/www/html/wp-content/plugins/404-solution/includes/SpellChecker.php(27): ABJ_404_Solution_PluginLogic->getOptions()
+#9 /var/www/html/wp-content/plugins/404-solution/includes/SpellChecker.php(43): ABJ_404_Solution_SpellChecker::getInstance()
+#10 /var/www/html/wp-content/plugins/404-solution/includes/Loader.php(51): ABJ_404_Solution_SpellChecker::init()
+#11 /var/www/html/wp-content/plugins/404-solution/404-solution.php(76): require_once('/var/www/html/w...')
+#12 /var/www/html/wp-admin/includes/plugin.php(2313): include_once('/var/www/html/w...')
+#13 /var/www/html/wp-admin/includes/plugin.php(661): plugin_sandbox_scrape('404-solution/40...')
+#14 /var/www/html/wp-admin/plugins.php(58): activate_plugin('404-solution/40...', 'https://nicolas...', false)
+#15 {main}
+2022-10-17 13:43:38 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_spelling_cache' doesn't exist, SQL: delete from wp_abj404_spelling_cache where matchdata is null or matchdata = '', Execution time: 0.01, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/plugin-install.php?s=404&tab=search&type=term, Requested URL: /wp-admin/plugins.php?_wpnonce=c5392ee0de&action=activate&plugin=404-solution%2F404-solution.php, 
+Stored debug messages: 
+, 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(88): ABJ_404_Solution_DataAccess->queryAndGetResults('delete from wp_...')
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(77): ABJ_404_Solution_DatabaseUpgradesEtc->correctMatchData()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(51): ABJ_404_Solution_DatabaseUpgradesEtc->correctIssuesBefore()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DatabaseUpgradesEtc.php(41): ABJ_404_Solution_DatabaseUpgradesEtc->reallyCreateDatabaseTables(true)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(375): ABJ_404_Solution_DatabaseUpgradesEtc->createDatabaseTables(true)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(335): ABJ_404_Solution_PluginLogic->updateToNewVersionAction(Array)
+#7 /var/www/html/wp-content/plugins/404-solution/includes/PluginLogic.php(305): ABJ_404_Solution_PluginLogic->updateToNewVersion(Array)
+#8 /var/www/html/wp-content/plugins/404-solution/includes/SpellChecker.php(27): ABJ_404_Solution_PluginLogic->getOptions()
+#9 /var/www/html/wp-content/plugins/404-solution/includes/SpellChecker.php(43): ABJ_404_Solution_SpellChecker::getInstance()
+#10 /var/www/html/wp-content/plugins/404-solution/includes/Loader.php(51): ABJ_404_Solution_SpellChecker::init()
+#11 /var/www/html/wp-content/plugins/404-solution/404-solution.php(76): require_once('/var/www/html/w...')
+#12 /var/www/html/wp-admin/includes/plugin.php(2313): include_once('/var/www/html/w...')
+#13 /var/www/html/wp-admin/includes/plugin.php(661): plugin_sandbox_scrape('404-solution/40...')
+#14 /var/www/html/wp-admin/plugins.php(58): activate_plugin('404-solution/40...', 'https://nicolas...', false)
+#15 {main}
+2022-10-17 13:43:48 CEST (INFO): Updating collation from latin1_swedish_ci to utf8mb4_unicode_520_ci
+2022-10-17 13:43:53 CEST (INFO): I succesfully changed the collation of wp_abj404_redirects to utf8mb4_unicode_520_ci
+2022-10-17 13:43:53 CEST (INFO): I succesfully changed the collation of wp_abj404_logsv2 to utf8mb4_unicode_520_ci
+2022-10-17 13:43:55 CEST (INFO): I succesfully changed the collation of wp_abj404_lookup to utf8mb4_unicode_520_ci
+2022-10-17 13:43:57 CEST (INFO): I succesfully changed the collation of wp_abj404_permalink_cache to utf8mb4_unicode_520_ci
+2022-10-17 13:43:59 CEST (INFO): I succesfully changed the collation of wp_abj404_spelling_cache to utf8mb4_unicode_520_ci
+2022-10-17 13:43:59 CEST (INFO): 634d3fe8a0e857.34764674: Updating database version to 2.31.2 (end).
+2022-10-17 13:44:00 CEST (INFO): 634d3fe97aa2d4.69444200: On wp_abj404_permalink_cache I'm updating various columns because we want: 
+`Array
+(
+    [0] => `id` bigint not null
+    [1] => `url` varchar(2048) not null
+    [2] => `meta` tinytext not null
+    [3] => `url_length` smallint default null
+    [4] => `post_parent` bigint not null
+)
+
+ but we have: 
+Array
+(
+    [0] => `id` bigint not null
+    [1] => `url` varchar(2048) not null
+    [2] => `meta` text not null
+    [3] => `url_length` smallint default null
+    [4] => `post_parent` bigint not null
+)
+
+2022-10-17 13:44:07 CEST (INFO): I updated a column: alter table wp_abj404_permalink_cache change meta `meta` tinytext not null
+2022-10-17 13:44:07 CEST (INFO): No more differences found after updating the wp_abj404_permalink_cache table columns. All is well.
+2022-10-17 13:44:07 CEST (INFO): 634d3fe97aa2d4.69444200: On wp_abj404_spelling_cache I'm updating various columns because we want: 
+`Array
+(
+    [0] => `id` bigint not null auto_increment
+    [1] => `url` varchar(2048) not null
+    [2] => `matchdata` text not null
+)
+
+ but we have: 
+Array
+(
+    [0] => `id` bigint not null auto_increment
+    [1] => `url` varchar(2048) not null
+    [2] => `matchdata` mediumtext not null
+)
+
+2022-10-17 13:44:10 CEST (INFO): I updated a column: alter table wp_abj404_spelling_cache change matchdata `matchdata` text not null
+2022-10-17 13:44:10 CEST (INFO): No more differences found after updating the wp_abj404_spelling_cache table columns. All is well.
+2022-10-17 13:44:27 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_logs_hits_temp' doesn't exist, SQL: insert into wp_abj404_logs_hits_temp (requested_url, logsid, last_used, logshits) 
+ 
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForViewTempTable.sql BEGIN ----- */ 
+
+SELECT  requested_url,
+        MIN(wp_abj404_logsv2.id) AS logsid,
+        max(wp_abj404_logsv2.timestamp) as last_used,
+        count(requested_url) as logshits
+
+FROM    wp_abj404_logsv2
+
+        inner join wp_abj404_redirects
+        on wp_abj404_logsv2.requested_url = wp_abj404_redirects.url 
+
+group by requested_url 
+
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForViewTempTable.sql END ----- */ 
+, Execution time: 0.47, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+2022-10-17 13:44:23 CEST (DEBUG): Processing request for action: (none)
+2022-10-17 13:44:23 CEST (DEBUG): Displaying sub page: abj404_captured
+2022-10-17 13:44:23 CEST (DEBUG): maybeUpdateRedirectsForViewHitsTable creating now because the table doesn't exist., 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(989): ABJ_404_Solution_DataAccess->queryAndGetResults('insert into wp_...', Array)
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(965): ABJ_404_Solution_DataAccess->createRedirectsForViewHitsTable()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(844): ABJ_404_Solution_DataAccess->maybeUpdateRedirectsForViewHitsTable()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(760): ABJ_404_Solution_DataAccess->getRedirectsForViewQuery('abj404_captured', Array, true, 0, 25, false)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#7 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#8 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#9 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#13 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#14 {main}
+2022-10-17 13:44:29 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_logs_hits_temp' doesn't exist, SQL: insert into wp_abj404_logs_hits_temp (requested_url, logsid, last_used, logshits) 
+ 
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForViewTempTable.sql BEGIN ----- */ 
+
+SELECT  requested_url,
+        MIN(wp_abj404_logsv2.id) AS logsid,
+        max(wp_abj404_logsv2.timestamp) as last_used,
+        count(requested_url) as logshits
+
+FROM    wp_abj404_logsv2
+
+        inner join wp_abj404_redirects
+        on wp_abj404_logsv2.requested_url = wp_abj404_redirects.url 
+
+group by requested_url 
+
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForViewTempTable.sql END ----- */ 
+, Execution time: 0.39, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+2022-10-17 13:44:25 CEST (DEBUG): Processing request for action: (none)
+2022-10-17 13:44:25 CEST (DEBUG): Displaying sub page: abj404_captured
+2022-10-17 13:44:25 CEST (DEBUG): maybeUpdateRedirectsForViewHitsTable creating now because the table doesn't exist., 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(989): ABJ_404_Solution_DataAccess->queryAndGetResults('insert into wp_...', Array)
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(965): ABJ_404_Solution_DataAccess->createRedirectsForViewHitsTable()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(844): ABJ_404_Solution_DataAccess->maybeUpdateRedirectsForViewHitsTable()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(760): ABJ_404_Solution_DataAccess->getRedirectsForViewQuery('abj404_captured', Array, true, 0, 25, false)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#7 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#8 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#9 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#13 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#14 {main}
+2022-10-17 13:44:29 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_logs_hits_temp' doesn't exist, SQL: ALTER TABLE wp_abj404_logs_hits_temp COMMENT '0.39269781112671', Execution time: 0, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+, 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(993): ABJ_404_Solution_DataAccess->queryAndGetResults('ALTER TABLE wp_...')
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(965): ABJ_404_Solution_DataAccess->createRedirectsForViewHitsTable()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(844): ABJ_404_Solution_DataAccess->maybeUpdateRedirectsForViewHitsTable()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(760): ABJ_404_Solution_DataAccess->getRedirectsForViewQuery('abj404_captured', Array, true, 0, 25, false)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#7 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#8 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#9 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#13 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#14 {main}
+2022-10-17 13:44:30 CEST (ERROR): Error executing SQL transaction: Can't find file: './DB1275_wordpress/wp_abj404_logs_hits_temp.frm' (errno: 2 - No such file or directory), PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+, 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(341): ABJ_404_Solution_Logging->errorMessage('Error executing...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(1000): ABJ_404_Solution_DataAccess->executeAsTransaction(Array)
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(965): ABJ_404_Solution_DataAccess->createRedirectsForViewHitsTable()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(844): ABJ_404_Solution_DataAccess->maybeUpdateRedirectsForViewHitsTable()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(760): ABJ_404_Solution_DataAccess->getRedirectsForViewQuery('abj404_captured', Array, true, 0, 25, false)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#7 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#8 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#9 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#13 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#14 {main}
+2022-10-17 13:44:30 CEST (ERROR): SQL causing the transaction error: rename table wp_abj404_logs_hits_temp to wp_abj404_logs_hits, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+, 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(342): ABJ_404_Solution_Logging->errorMessage('SQL causing the...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(1000): ABJ_404_Solution_DataAccess->executeAsTransaction(Array)
+#2 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(965): ABJ_404_Solution_DataAccess->createRedirectsForViewHitsTable()
+#3 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(844): ABJ_404_Solution_DataAccess->maybeUpdateRedirectsForViewHitsTable()
+#4 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(760): ABJ_404_Solution_DataAccess->getRedirectsForViewQuery('abj404_captured', Array, true, 0, 25, false)
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#6 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#7 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#8 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#9 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#13 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#14 {main}
+2022-10-17 13:44:30 CEST (ERROR): Ugh. SQL query error: Table 'DB1275_wordpress.wp_abj404_logs_hits' doesn't exist, SQL: 
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForView.sql BEGIN ----- */ 
+
+select 
+
+/* this is replaced with either count(*) + start comment or with nothing. */
+/* selecting data as usual */
+
+        wp_abj404_redirects.id,
+        wp_abj404_redirects.url,
+        wp_abj404_redirects.status,
+        (CASE
+          when wp_abj404_redirects.status = 1 then 'Man'
+          when wp_abj404_redirects.status = 2 then 'Auto'
+          when wp_abj404_redirects.status = 6 then 'RegEx'
+          else 'Unknown'
+         end) as status_for_view,
+        wp_abj404_redirects.type,
+        (CASE
+          when wp_abj404_redirects.type = 4 then 'External'
+          when wp_abj404_redirects.type = 2 then 'Category'
+          when wp_abj404_redirects.type = 3 then 'Tag'
+          when wp_abj404_redirects.type = 5 then 'Home Page'
+          when wp_abj404_redirects.type = 1 then 
+                CONCAT(UCASE(LEFT(wp_posts.post_type, 1)), LCASE(SUBSTRING(wp_posts.post_type, 2)))
+          else 'Unknown'
+         end) as type_for_view,
+        wp_abj404_redirects.final_dest,
+        (case
+          when wp_abj404_redirects.type = 4 then wp_abj404_redirects.final_dest
+          when wp_abj404_redirects.type = 1 then wp_posts.post_title
+          when wp_abj404_redirects.type = 2 then terms.name
+          when wp_abj404_redirects.type = 3 then terms.name
+          when wp_abj404_redirects.type = 5 then wp_options.option_value
+          else '? Dest Type'
+        end) as dest_for_view,
+
+        wp_abj404_redirects.code,
+        wp_abj404_redirects.timestamp,
+        wp_posts.id as wp_post_id,
+
+        logstable.logshits as logshits, 
+logstable.logsid, 
+logstable.last_used, 
+
+
+        wp_posts.post_type as wp_post_type
+
+/* This ends a comment when only select for the count(*) */
+
+from    wp_abj404_redirects wp_abj404_redirects
+
+        LEFT OUTER JOIN wp_posts wp_posts
+        on binary wp_abj404_redirects.final_dest = binary wp_posts.id 
+
+          LEFT OUTER JOIN wp_abj404_logs_hits logstable 
+   on binary wp_abj404_redirects.url = binary logstable.requested_url 
+ 
+
+        left outer join wp_terms terms
+        on binary wp_abj404_redirects.final_dest = binary terms.term_id
+
+        inner join wp_options wp_options
+        on binary wp_options.option_name = binary 'blogname'
+
+where 1 and (status in (3)) and disabled = 0
+
+/* no redirects fiter text found
+and replace(lower(CONCAT(wp_abj404_redirects.url, '////', 
+        (CASE
+          when wp_abj404_redirects.status = 1 then 'Man'
+          when wp_abj404_redirects.status = 2 then 'Auto'
+          when wp_abj404_redirects.status = 6 then 'RegEx'
+          else 'Unknown'
+         end), '////',
+        (CASE
+          when wp_abj404_redirects.type = 4 then 'External'
+          when wp_abj404_redirects.type = 2 then 'Category'
+          when wp_abj404_redirects.type = 3 then 'Tag'
+          when wp_abj404_redirects.type = 5 then 'Home Page'
+          when wp_abj404_redirects.type = 1 then 
+                CONCAT(UCASE(LEFT(wp_posts.post_type, 1)), LCASE(SUBSTRING(wp_posts.post_type, 2)))
+          else 'Unknown'
+         end), '////',
+        (case
+          when wp_abj404_redirects.type = 4 then wp_abj404_redirects.final_dest
+          when wp_abj404_redirects.type = 1 then wp_posts.post_title
+          when wp_abj404_redirects.type = 2 then terms.name
+          when wp_abj404_redirects.type = 3 then terms.name
+          when wp_abj404_redirects.type = 5 then wp_options.option_value
+          else '? Dest Type'
+        end), '////',
+        wp_abj404_redirects.code)
+), ' ', '')
+like replace(lower('%%'), ' ', '')
+/* */
+
+/* no captured 404s filter text found
+and replace(lower(wp_abj404_redirects.url), ' ', '') like replace(lower('%%'), ' ', '')
+/* */
+
+order by logshits DESC
+
+limit 0, 25
+
+/* ------------------ /var/www/html/wp-content/plugins/404-solution/includes/sql/getRedirectsForView.sql END ----- */ 
+, Execution time: 0, DB ver: 5.7.26, Variables: Array
+(
+    [0] => Array
+        (
+            [max_join_size] => 18446744073709551615
+            [sql_big_selects] => 1
+        )
+
+)
+, PHP version: 7.0.33-0+deb9u12, WP ver: 6.0.2, Plugin ver: 2.31.2, Referrer: https://nicolasblanc.dev/wp-admin/options-general.php?page=abj404_solution&subpage=abj404_redirects, Requested URL: /wp-admin/options-general.php?page=abj404_solution&subpage=abj404_captured, 
+Stored debug messages: 
+2022-10-17 13:44:30 CEST (DEBUG): createRedirectsForViewHitsTable refreshed wp_abj404_logs_hits in 0.39269781112671 seconds., 
+Trace: #0 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(241): ABJ_404_Solution_Logging->errorMessage('Ugh. SQL query ...')
+#1 /var/www/html/wp-content/plugins/404-solution/includes/DataAccess.php(768): ABJ_404_Solution_DataAccess->queryAndGetResults('\n/* -----------...')
+#2 /var/www/html/wp-content/plugins/404-solution/includes/View.php(941): ABJ_404_Solution_DataAccess->getRedirectsForView('abj404_captured', Array)
+#3 /var/www/html/wp-content/plugins/404-solution/includes/View.php(892): ABJ_404_Solution_View->getCapturedURLSPageTable('abj404_captured')
+#4 /var/www/html/wp-content/plugins/404-solution/includes/View.php(112): ABJ_404_Solution_View->echoAdminCapturedURLsPage()
+#5 /var/www/html/wp-content/plugins/404-solution/includes/View.php(75): ABJ_404_Solution_View->echoChosenAdminTab(NULL, 'abj404_captured', '')
+#6 /var/www/html/wp-includes/class-wp-hook.php(307): ABJ_404_Solution_View::handleMainAdminPageActionAndDisplay('')
+#7 /var/www/html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-admin/admin.php(259): do_action('settings_page_a...')
+#10 /var/www/html/wp-admin/options-general.php(10): require_once('/var/www/html/w...')
+#11 {main}
